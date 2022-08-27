@@ -5,38 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihebang <jihebang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 03:03:45 by jihebang          #+#    #+#             */
-/*   Updated: 2022/08/27 02:54:53 by jihebang         ###   ########.fr       */
+/*   Created: 2022/08/28 01:30:31 by jihebang          #+#    #+#             */
+/*   Updated: 2022/08/28 01:50:19 by jihebang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
-#include<stdio.h>
 
+void ft_putchar(char a, char b, char c)
+{
+	write(1,&a,1);
+	write(1,&b,1);
+	write(1,&c,1);
 
-	int n[10] = {0,1,2,3,4,5,6,7,8,9};
-	int r=3;
-	int result[3];
-	int level = 0;
-	int begin =0;
+}
 
-	void	DFS(level,begin)
+void	ft_print_comb(void)
+{
+	int i;
+	int j;
+	int k;
+	i = 0;
+	while(i <= 7)
 	{
-		if (level ==r ){
-			for(int i=0;i<3;i++){
-				printf("%d ",result[i]);
+		j = i+1;
+		while( j <= 8 )
+		{
+			k = j + 1;
+			while(k <= 9)
+			{
+				if(i == 7)
+				{
+					write(1,"789",3);
+					return;
+				}
+				ft_putchar(i, j, k);
+				write(1,", ",2);
 			}
-			printf("\n");
 		}
-		else{
-			while(begin<10){
-				result[level] = n[begin];
-				DFS(level+1,begin+1);
-				begin++;
-			}
-		}
+		i++;
 	}
+}
 
-int main(){
-DFS(0,0);
+int main()
+{
+	ft_print_comb();
 }
